@@ -18,6 +18,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    '@emotion',
   ],
   rules: {
     'react/jsx-filename-extension': [2, { extensions: ['.jsx', '.tsx'] }],
@@ -34,6 +35,7 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'react/jsx-max-props-per-line': [1, { maximum: 1 }],
   },
   settings: {
     'import/resolver': {

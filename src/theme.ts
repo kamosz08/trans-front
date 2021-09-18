@@ -1,5 +1,10 @@
 export const theme = {
   colors: {
-    primary: '#f1f1f1',
+    primary: '#06FDFF',
+    blue: '#1F2AF0',
+    secondaryBlue: '#118ab2',
+    pink: '#ef476f',
+    pinkHover: '#de385f',
+    yellow: '#ffd166',
   },
 };
