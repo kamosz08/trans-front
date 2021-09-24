@@ -36,31 +36,12 @@ const NavbarLink = styled(Link)<{isActive: boolean}>`
   &:hover { 
     color: #ffffff;
   }
-  /* &:after {    
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    visibility: hidden;
-    height: 2.5px;
-    left: 50%;
-    position: absolute;
-    background: ${theme.colors.primary};
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    border-radius: 8px;
-    width: 0px;
-  }
-  &:hover:after { 
-    visibility: visible;
-    width: 100%; 
-    left: 0; 
-  } */
 `;
 
 export const Navbar: React.FC = () => (
   <NavbarWrapper>
     <NavbarInnerWrapper>
-      <Box>Left</Box>
+      <Box maxWidth="160px">Left</Box>
       <Box>
         <NavbarLink
           to="/404"

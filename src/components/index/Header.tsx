@@ -1,10 +1,8 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
-import { navigate } from 'gatsby';
 import { theme } from '../../theme';
 import { Box } from '../styled/Box';
-import { Button } from '../styled/Button';
 
 const Wrapper = styled.div`
   display: flex;
@@ -54,9 +52,10 @@ const Title = styled.p`
   margin-top: 16px;
   margin-left: 16px;
   margin-right: 32px;
-  margin-bottom: 32px;
+  margin-bottom: 96px;
   color: #fbfbfbf2;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
+  letter-spacing: 1.8px;
   font-weight: 600;
 `;
 
@@ -90,13 +89,7 @@ export const Header: React.FC = () => (
             <br />
             best services
           </Title>
-          <Button
-            ml="32px"
-            mb="92px"
-            onClick={() => { navigate('/register'); }}
-          >
-            Try it now
-          </Button>
+
           <Box
             ml="32px"
             mb="-32px"
