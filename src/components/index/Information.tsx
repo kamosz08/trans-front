@@ -3,8 +3,8 @@ import React from 'react';
 import { Box } from '../styled/Box';
 
 const Paragraph = styled.p`
-  color: #3B3B3B;
-  font-size: 1.2rem;
+  color: #37465a;
+  font-size: 15px;
 `;
 
 const Title = styled.p`

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Link, navigate } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
 import { theme } from '../theme';
 import { Button } from './styled/Button';
 import { Box } from './styled/Box';
@@ -17,6 +18,7 @@ const NavbarWrapper = styled.div`
 `;
 
 const NavbarInnerWrapper = styled.div`
+  padding: 8px 32px;
   width: 100%;
   max-width: 1080px;
   display: flex;
@@ -41,7 +43,20 @@ const NavbarLink = styled(Link)<{isActive: boolean}>`
 export const Navbar: React.FC = () => (
   <NavbarWrapper>
     <NavbarInnerWrapper>
-      <Box maxWidth="160px">Left</Box>
+      <Box
+        maxWidth="160px"
+        mb="-20px"
+      >
+        <StaticImage
+          src="../images/logo.png"
+          alt="logo"
+          layout="constrained"
+          width={72}
+          quality={100}
+          placeholder="blurred"
+        />
+
+      </Box>
       <Box>
         <NavbarLink
           to="/404"

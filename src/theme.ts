@@ -6,5 +6,6 @@ export const theme = {
     pink: '#ef476f',
     pinkHover: '#de385f',
     yellow: '#ffd166',
+    darkGrey: '#37465A',
   },
 };
