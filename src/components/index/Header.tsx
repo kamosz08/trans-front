@@ -1,8 +1,10 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
+import CountUp, { useCountUp } from 'react-countup';
 import { theme } from '../../theme';
 import { Box } from '../styled/Box';
+import { CounterStat } from './CounterStat';
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,7 +54,6 @@ const Title = styled.p`
   margin-top: 16px;
   margin-left: 16px;
   margin-right: 32px;
-  margin-bottom: 96px;
   color: #fbfbfbf2;
   font-size: 2.4rem;
   letter-spacing: 1.8px;
@@ -91,18 +92,44 @@ export const Header: React.FC = () => (
           </Title>
 
           <Box
-            ml="32px"
-            mb="-32px"
+            mb="8px"
+            mt="64px"
             display="flex"
+            padding="8px 32px"
           >
-            <Card>
+            {/* <Card>
               <SecondaryTitle>What we do best</SecondaryTitle>
               <CardTitle>Fleet management</CardTitle>
             </Card>
             <Card>
               <SecondaryTitle>What we do best</SecondaryTitle>
               <CardTitle>Minimize fuel costs</CardTitle>
-            </Card>
+            </Card> */}
+            <CounterStat
+              secondaryText="wzrost zysków"
+              start={0}
+              end={25}
+            />
+            <CounterStat
+              secondaryText="mniej telefonów do kierowców"
+              start={0}
+              end={-40}
+            />
+          </Box>
+          <Box
+            display="flex"
+            padding="8px 32px"
+          >
+            <CounterStat
+              secondaryText="wzrost obłożenia pojazdów"
+              start={0}
+              end={15}
+            />
+            <CounterStat
+              secondaryText="redukcja zużycia paliwa"
+              start={0}
+              end={-25}
+            />
           </Box>
         </Box>
 
