@@ -15,15 +15,18 @@ const Title = styled.p`
   text-transform: capitalize;
 `;
 
-export const Information: React.FC = () => (
+type Props = {
+  title: string;
+  description: string;
+}
+
+export const Information: React.FC<Props> = ({ title, description }) => (
   <Box padding="16px 16px">
     <Title>
-      Focus on what is really important
+      {title}
     </Title>
     <Paragraph>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      Ea eum autem tempora repellat laboriosam illo debitis, veniam, laudantium
-      ducimus vitae culpa velam possimus.
+      {description}
     </Paragraph>
   </Box>
 );
