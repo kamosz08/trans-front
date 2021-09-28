@@ -19,7 +19,7 @@ export const CounterStat: React.FC<Props> = ({ secondaryText, ...rest }) => {
     <Box
       textAlign="center"
       color="white"
-      width="128px"
+      width="164px"
       ml="16px"
       mr="16px"
     >

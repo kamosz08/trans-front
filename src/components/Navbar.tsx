@@ -45,13 +45,12 @@ export const Navbar: React.FC = () => (
     <NavbarInnerWrapper>
       <Box
         maxWidth="160px"
-        mb="-32px"
       >
         <StaticImage
-          src="../images/logo_white.png"
+          src="../images/logo_no_text.png"
           alt="logo"
           layout="constrained"
-          width={96}
+          width={48}
           quality={100}
           placeholder="blurred"
         />

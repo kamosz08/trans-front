@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Link, PageProps } from 'gatsby';
-import Zoom from 'react-reveal/Zoom';
+import { PageProps } from 'gatsby';
 import config from 'react-reveal/globals';
 
 import { Layout } from '../components/Layout';
@@ -16,13 +15,6 @@ const IndexPage = (props: PageProps) => {
     <Layout>
       <Header />
       <Features />
-      <Link to="/app">Try it now</Link>
-      asdasdasd
-      asdasd
-      {Array(100).fill(1).map((item, idx) => <div>{idx}</div>)}
-      <Zoom>
-        <p>Markup that will be revealed on scroll</p>
-      </Zoom>
     </Layout>
   );
 };
