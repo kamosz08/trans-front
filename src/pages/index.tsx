@@ -4,7 +4,7 @@ import config from 'react-reveal/globals';
 
 import { Layout } from '../components/Layout';
 import { Header } from '../components/index/Header';
-import { Features } from '../components/index/Features';
+import { MainPageContent } from '../components/index/MainPageContent';
 
 config({ ssrFadeout: true });
 
@@ -14,7 +14,7 @@ const IndexPage = (props: PageProps) => {
   return (
     <Layout>
       <Header />
-      <Features />
+      <MainPageContent />
     </Layout>
   );
 };

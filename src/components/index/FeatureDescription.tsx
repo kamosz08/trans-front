@@ -22,7 +22,7 @@ export const FeatureDescription: React.FC<Props> = ({
   );
 
   return (
-    <Zoom>
+    <Zoom left>
       <Box
         display="flex"
         maxWidth="960px"

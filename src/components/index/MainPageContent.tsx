@@ -2,6 +2,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Box } from '../styled/Box';
 import { FeatureDescription } from './FeatureDescription';
+import { OpinionsCarousel } from './OpinionsCarousel';
 
 const mobileImage = (
   <StaticImage
@@ -44,7 +45,7 @@ const successImage = (
   />
 );
 
-export const Features: React.FC = () => (
+export const MainPageContent: React.FC = () => (
   <Box>
     <FeatureDescription
       imageComponent={mobileImage}
@@ -57,6 +58,7 @@ export const Features: React.FC = () => (
       title="Opłaty mobilne"
       description="Dzięki mobilnej wersji możesz wykupywać drogi całej flocie z dowolnego miejsca. Możliwe jest też udostępnienie konta kierowcom aby sami byli w stanie to zrobić."
     />
+    <OpinionsCarousel />
     <FeatureDescription
       imageComponent={successImage}
       title="Analiza wnioskóœ"
