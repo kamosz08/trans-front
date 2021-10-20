@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://trans.netlify.app',
+    siteUrl: 'https://trans-manager.netlify.app',
     title: 'Trans',
     description: 'Gatsby hybrid project',
     author: 'kamosz08',
@@ -35,16 +35,16 @@ module.exports = {
       __key: 'images',
     },
     {
-      resolve: 'gatsby-plugin-prefetch-google-fonts',
+      resolve: 'gatsby-plugin-google-fonts-v2',
       options: {
         fonts: [
           {
             family: 'Roboto',
-            variants: ['400', '700'],
+            weights: ['400', '700'],
           },
           {
             family: 'Open Sans',
-            variants: ['400', '700'],
+            weights: ['400', '700'],
           },
         ],
       },
