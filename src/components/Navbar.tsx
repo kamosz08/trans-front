@@ -1,6 +1,5 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
 import { theme } from '../theme';
 import { Button } from './styled/Button';
@@ -26,20 +25,6 @@ const NavbarInnerWrapper = styled.div`
   align-items: center;
 `;
 
-const NavbarLink = styled(Link)<{isActive: boolean}>`
-  position: relative;
-  font-size: large;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  margin-left: 64px;
-  padding-bottom: 4px;
-  color: ${(props) => (props.isActive ? '#ffffff' : '#ffffffb7')};
-
-  &:hover { 
-    color: #ffffff;
-  }
-`;
-
 export const Navbar: React.FC = () => (
   <NavbarWrapper>
     <NavbarInnerWrapper>
@@ -57,29 +42,11 @@ export const Navbar: React.FC = () => (
 
       </Box>
       <Box>
-        <NavbarLink
-          to="/404"
-          isActive
-        >
-          Features
-        </NavbarLink>
-        <NavbarLink
-          to="/404"
-          isActive={false}
-        >
-          About
-        </NavbarLink>
-        <NavbarLink
-          to="/404"
-          isActive={false}
-        >
-          Contact
-        </NavbarLink>
         <Button
           ml="128px"
-          onClick={() => { navigate('/login'); }}
+          onClick={() => { navigate('/app/login'); }}
         >
-          Login
+          Zaloguj
         </Button>
       </Box>
 

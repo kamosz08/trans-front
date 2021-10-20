@@ -42,11 +42,11 @@ export const Header: React.FC = () => (
   <WrapperWithBackground>
     <Wrapper>
       <Title>
-        Work with experts
+        Korzystaj z platformy
         <br />
-        who deliver
+        dostarczającej
         <br />
-        best services
+        najlepsze sewisy
       </Title>
       <Box
         width="100%"

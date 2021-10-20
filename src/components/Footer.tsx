@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
-import React from 'react';
 import { theme } from '../theme';
 import { Box } from './styled/Box';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Router } from '@reach/router';
 import { Login } from './components/Login';
 import { Register } from './components/Register';

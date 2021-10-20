@@ -1,7 +1,10 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
-    title: 'trans',
+    siteUrl: 'https://trans.netlify.app',
+    title: 'Trans',
+    description: 'Gatsby hybrid project',
+    author: 'kamosz08',
+    twitterUsername: '@john_doe',
   },
   plugins: [
     {
@@ -16,6 +19,8 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',

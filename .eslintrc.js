@@ -36,6 +36,7 @@ module.exports = {
       },
     ],
     'react/jsx-max-props-per-line': [1, { maximum: 1 }],
+    'react/require-default-props': 1,
   },
   settings: {
     'import/resolver': {
