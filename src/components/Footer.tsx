@@ -9,6 +9,14 @@ const StyledLink = styled(Link)(() => ({
   color: 'white',
 }));
 
+const FooterText = styled.div`
+  text-align: end;
+
+  @media (max-width: 460px) {
+    text-align: center;
+  }
+`;
+
 export const Footer: React.FC = () => (
   <Box
     width="100%"
@@ -38,9 +46,9 @@ export const Footer: React.FC = () => (
         />
         <Box mt="8px">Open Github repo</Box>
       </StyledLink>
-      <Box textAlign="end">
+      <FooterText>
         Made for educational purposes 2021
-      </Box>
+      </FooterText>
     </Box>
   </Box>
 );

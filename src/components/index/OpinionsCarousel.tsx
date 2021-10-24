@@ -9,7 +9,7 @@ export const OpinionsCarousel = () => (
     <Box
       width="100%"
       backgroundColor="#37465A"
-      height="240px"
+      minHeight="240px"
       pt="32px"
       display="flex"
       justifyContent="center"
@@ -17,6 +17,7 @@ export const OpinionsCarousel = () => (
     >
       <Box
         maxWidth="960px"
+        width="100%"
         color="white"
         mb="-16px"
       >

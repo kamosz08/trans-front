@@ -22,6 +22,7 @@ export const CounterStat: React.FC<Props> = ({ secondaryText, ...rest }) => {
       width="164px"
       ml="16px"
       mr="16px"
+      mt="8px"
     >
       <Box
         fontSize="52px"
