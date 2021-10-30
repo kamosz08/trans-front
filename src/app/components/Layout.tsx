@@ -1,9 +1,11 @@
 import React from 'react';
-import { Navbar } from './Navbar';
+import { ContentContainer } from './ContentContainer';
+import { Sidebar } from './Sidebar';
 
 export const Layout: React.FC = ({ children }) => (
-  <div>
-    <Navbar />
-    {children}
+  <div className="flex">
+    <Sidebar />
+    <ContentContainer />
+    {/* {children} */}
   </div>
 );

@@ -15,7 +15,7 @@ export const Main: React.FC<Props> = () => {
   }, []);
 
   return (
-    <div>
+    <div className="text-green-700">
       Main page
       {users.map((user) => <div key={user._id}>{JSON.stringify(user, null, 2)}</div>)}
     </div>

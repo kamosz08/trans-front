@@ -19,6 +19,7 @@ module.exports = {
         icon: 'src/images/icon.png',
       },
     },
+    'gatsby-plugin-postcss',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-emotion',
