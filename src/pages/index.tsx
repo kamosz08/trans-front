@@ -2,10 +2,10 @@ import * as React from 'react';
 import { PageProps } from 'gatsby';
 import config from 'react-reveal/globals';
 
-import { Layout } from '../components/Layout';
-import { Header } from '../components/index/Header';
-import { MainPageContent } from '../components/index/MainPageContent';
-import { SEO } from '../components/Seo';
+import { Layout } from '@components/Layout';
+import { Header } from '@components/index/Header';
+import { MainPageContent } from '@components/index/MainPageContent';
+import { SEO } from '@components/Seo';
 
 config({ ssrFadeout: true });
 

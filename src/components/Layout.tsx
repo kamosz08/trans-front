@@ -1,7 +1,7 @@
 import React from 'react';
-import { Footer } from './Footer';
-import { Navbar } from './Navbar';
-import { Box } from './styled/Box';
+import { Box } from '@components/styled/Box';
+import { Footer } from '@components/Footer';
+import { Navbar } from '@components/Navbar';
 
 export const Layout: React.FC = ({ children }) => (
   <>

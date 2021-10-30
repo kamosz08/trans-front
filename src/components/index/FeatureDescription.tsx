@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import Zoom from 'react-reveal/Zoom';
-import { Box } from '../styled/Box';
+import { Box } from '@components/styled/Box';
 import { Information } from './Information';
 
 type Props = {

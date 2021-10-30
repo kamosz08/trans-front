@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { navigate } from 'gatsby';
+import { Button } from '@components/styled/Button';
+import { Box } from '@components/styled/Box';
 import { theme } from '../../theme';
-import { Box } from '../styled/Box';
 import { CounterStat } from './CounterStat';
-import { Button } from '../styled/Button';
 
 const Wrapper = styled.div`
   display: flex;

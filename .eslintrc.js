@@ -6,6 +6,9 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:react/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,6 +21,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'import',
     '@emotion',
   ],
   rules: {
@@ -37,9 +41,32 @@ module.exports = {
     ],
     'react/jsx-max-props-per-line': [1, { maximum: 1 }],
     'react/require-default-props': 1,
+    'import/order': [
+      'error',
+      {
+        pathGroups: [
+          {
+            pattern: '@components/**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: '@pages/**',
+            group: 'parent',
+            position: 'before',
+          },
+          {
+            pattern: '@app/**',
+            group: 'parent',
+            position: 'before',
+          },
+        ],
+      },
+    ],
   },
   settings: {
     'import/resolver': {
+      typescript: {},
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },

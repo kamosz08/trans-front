@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useCountUp } from 'react-countup';
-import { Box } from '../styled/Box';
+import { Box } from '@components/styled/Box';
 
 type Props = {
   secondaryText: string

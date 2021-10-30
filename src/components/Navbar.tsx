@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import { navigate } from 'gatsby';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Button } from '@components/styled/Button';
+import { Box } from '@components/styled/Box';
 import { theme } from '../theme';
-import { Button } from './styled/Button';
-import { Box } from './styled/Box';
 
 const NavbarWrapper = styled.div`
   left: 0;

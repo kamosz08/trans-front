@@ -1,8 +1,8 @@
 import { Router } from '@reach/router';
-import { Login } from '../../app/components/Login';
-import { Register } from '../../app/components/Register';
-import { Layout } from '../../app/components/Layout';
-import { Main } from '../../app/components/Main';
+import { Login } from '@app/components/Login';
+import { Register } from '@app/components/Register';
+import { Layout } from '@app/components/Layout';
+import { Main } from '@app/components/Main';
 
 const App = () => (
   <Layout>

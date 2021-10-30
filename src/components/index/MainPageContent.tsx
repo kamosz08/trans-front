@@ -1,6 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { Box } from '../styled/Box';
+import { Box } from '@components/styled/Box';
 import { FeatureDescription } from './FeatureDescription';
 import { OpinionsCarousel } from './OpinionsCarousel';
 

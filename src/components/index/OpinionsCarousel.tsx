@@ -2,7 +2,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Fade from 'react-reveal/Fade';
 import { StaticImage } from 'gatsby-plugin-image';
-import { Box } from '../styled/Box';
+import { Box } from '@components/styled/Box';
 
 export const OpinionsCarousel = () => (
   <Fade>

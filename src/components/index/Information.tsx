@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { Box } from '../styled/Box';
+import { Box } from '@components/styled/Box';
 
 const Paragraph = styled.p`
   color: #37465a;
