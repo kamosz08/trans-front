@@ -39,7 +39,6 @@ export const Navbar: React.FC = () => (
           quality={100}
           placeholder="blurred"
         />
-
       </Box>
       <Box>
         <Button

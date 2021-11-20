@@ -1,18 +1,26 @@
 import {
-  FaSearch,
-  FaHashtag,
-  FaRegBell,
   FaUserCircle,
   FaMoon,
   FaSun,
 } from 'react-icons/fa';
 import { useDarkMode } from '@app/hooks/useDarkMode';
+import { useSelectedRoute } from '@app/hooks/useSelectedRoute';
+
+const TITLES = {
+  orders: 'Zlecenia',
+  vehicles: 'Pojazdy',
+  drivers: 'Kierowcy',
+};
 
 const ThemeIcon = () => {
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
   return (
-    <span onClick={handleMode}>
+    <button
+      onClick={handleMode}
+      type="button"
+      className="outline-none"
+    >
       {darkTheme ? (
         <FaSun
           size="24"
@@ -24,50 +32,28 @@ const ThemeIcon = () => {
           className="top-navigation-icon"
         />
       )}
-    </span>
+    </button>
   );
 };
 
-const Search = () => (
-  <div className="search">
-    <input
-      className="search-input"
-      type="text"
-      placeholder="Search..."
-    />
-    <FaSearch
-      size="18"
-      className="text-secondary my-auto"
-    />
-  </div>
-);
-const BellIcon = () => (
-  <FaRegBell
-    size="24"
-    className="top-navigation-icon"
-  />
-);
 const UserCircle = () => (
   <FaUserCircle
     size="24"
     className="top-navigation-icon"
   />
 );
-const HashtagIcon = () => (
-  <FaHashtag
-    size="20"
-    className="title-hashtag"
-  />
-);
-const Title = () => <h5 className="title-text">tailwind-css</h5>;
+
+const Title = () => {
+  const selectedRoute = useSelectedRoute();
+  const title = TITLES[selectedRoute] || 'Trans';
+
+  return (<h5 className="title-text">{title}</h5>);
+};
 
 export const TopNavigation = () => (
   <div className="top-navigation">
-    <HashtagIcon />
     <Title />
     <ThemeIcon />
-    <Search />
-    <BellIcon />
     <UserCircle />
   </div>
 );
