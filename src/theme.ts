@@ -1,10 +1,12 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+// const colors = require('tailwindcss/colors');
+
+// console.log(colors);
+
 export const theme = {
   colors: {
     primary: '#06FDFF',
-    blue: '#1F2AF0',
     secondaryBlue: '#118ab2',
-    pink: '#ef476f',
-    pinkHover: '#de385f',
     yellow: '#ffd166',
     darkGrey: '#37465A',
   },

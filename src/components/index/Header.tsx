@@ -3,29 +3,7 @@ import styled from '@emotion/styled';
 import { navigate } from 'gatsby';
 import { Button } from '@components/styled/Button';
 import { Box } from '@components/styled/Box';
-import { theme } from '../../theme';
 import { CounterStat } from './CounterStat';
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1400px;
-  
-  @media (max-width: 1200px) {
-    justify-content: center;
-  }
-`;
-
-const WrapperWithBackground = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  min-height: 520px;
-  background-color: ${theme.colors.blue};
-`;
 
 const CountersWrapper = styled.div`
   margin-bottom: 8px;
@@ -53,14 +31,14 @@ const Title = styled.p`
 `;
 
 export const Header: React.FC = () => (
-  <WrapperWithBackground>
-    <Wrapper>
+  <div className="w-full flex justify-center min-h-[520px] bg-gray-900">
+    <div className="flex flex-wrap justify-center align-baseline w-full max-w-7xl">
       <Title>
-        Korzystaj z platformy
+        Use the platform
         <br />
-        dostarczającej
+        providing
         <br />
-        najlepsze sewisy
+        best services
       </Title>
       <Box
         width="100%"
@@ -68,31 +46,36 @@ export const Header: React.FC = () => (
         justifyContent="center"
         mt="32px"
       >
-        <Button onClick={() => { navigate('/app/login'); }}>Wypróbuj za darmo</Button>
+        <Button
+          className="bg-blue-600"
+          onClick={() => { navigate('/app/login'); }}
+        >
+          Try it now for free
+        </Button>
       </Box>
       <CountersWrapper>
         <CounterStat
-          secondaryText="wzrost zysków"
+          secondaryText="increase in profits"
           start={0}
           end={25}
         />
         <CounterStat
-          secondaryText="mniej telefonów do kierowców"
+          secondaryText="fewer calls to drivers"
           start={0}
           end={-40}
         />
 
         <CounterStat
-          secondaryText="wzrost obłożenia pojazdów"
+          secondaryText="increase in vehicle occupancy"
           start={0}
           end={15}
         />
         <CounterStat
-          secondaryText="redukcja zużycia paliwa"
+          secondaryText="reduction of fuel consumption"
           start={0}
           end={-25}
         />
       </CountersWrapper>
-    </Wrapper>
-  </WrapperWithBackground>
+    </div>
+  </div>
 );

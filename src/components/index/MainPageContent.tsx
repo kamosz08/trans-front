@@ -49,26 +49,26 @@ export const MainPageContent: React.FC = () => (
   <Box>
     <FeatureDescription
       imageComponent={mobileImage}
-      title="Optymalizacja tras"
-      description="System tworzy najbardziej optymalne trasy dostawy. Stosując sztuczną inteligencję oraz dane zbierane z innych systemów jest w stanie zredukować koszty dostaw."
+      title="Route optimization"
+      description="The system creates the most optimal delivery routes. By using artificial intelligence and data collected from other systems, it is able to reduce delivery costs."
     />
     <FeatureDescription
       imageComponent={mobile2Image}
       imageFirst
-      title="Opłaty mobilne"
-      description="Dzięki mobilnej wersji możesz wykupywać drogi całej flocie z dowolnego miejsca. Możliwe jest też udostępnienie konta kierowcom aby sami byli w stanie to zrobić."
+      title="Mobile fees"
+      description="Thanks to the mobile version, you can buy roads for the entire fleet from anywhere. It is also possible to share the account with drivers so that they can do it themselves."
     />
     <OpinionsCarousel />
     <FeatureDescription
       imageComponent={successImage}
-      title="Analiza wnioskóœ"
-      description="Rozbudowane raporty i analizy pozwolą na wyciąganie istotnych wniosków, które mogą znacznie wpłynąć na korzyści. Na ich podstawie wiele firm wprowadza system nagród który motywuje swoich pracowników."
+      title="Analysis of applications"
+      description="Extensive reports and analyzes will allow you to draw important conclusions that can significantly affect the benefits. On their basis, many companies introduce a reward system that motivates their employees."
     />
     <FeatureDescription
       imageComponent={moneyImage}
       imageFirst
-      title="Oszczędza czas i pieniądze"
-      description="Głównym celem systemu jest zoptymalizowanie pracy aby zaoszczędzić czas i pieniądze. Wyliczanie tras, wspomaganie w zarządzaniu zleceniami, śledzenie pojazdów i kontrolowanie ich spalania, wszystko w jednym miejscu."
+      title="It saves time and money"
+      description="The main goal of the system is to optimize the work in order to save time and money. Calculating routes, assisting in managing orders, tracking vehicles and controlling their combustion, all in one place."
     />
   </Box>
 );

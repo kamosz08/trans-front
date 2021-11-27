@@ -43,7 +43,7 @@ export const OpinionsCarousel = () => (
                 placeholder="blurred"
               />
             </Box>
-            <Box fontStyle="italic">&bdquo;Łatwy w obsłudze, intuicyjny system. Znacznie usprawnia zarządzanie transportem.&quot;</Box>
+            <Box fontStyle="italic">&bdquo;Easy-to-use, intuitive system. It significantly improves transport management.&quot;</Box>
           </Box>
           <Box
             pb="32px"
@@ -62,7 +62,7 @@ export const OpinionsCarousel = () => (
                 placeholder="blurred"
               />
             </Box>
-            <Box fontStyle="italic">&bdquo;Żałuje że nie wprowadziliśmy tego systemu wcześniej. Wspomaga zarządzanie całą firmą transportową.&quot;</Box>
+            <Box fontStyle="italic">&bdquo;I wish we had introduced this system sooner. It supports the management of the entire transport company.&quot;</Box>
           </Box>
           <Box
             pb="32px"
@@ -81,7 +81,7 @@ export const OpinionsCarousel = () => (
                 placeholder="blurred"
               />
             </Box>
-            <Box fontStyle="italic">&bdquo;Odkąd używamy systemu zaobserwowaliśmy wyraźny spadek liczby telefonów wykonywanych przez kierowców w sprawie dostawy lub odbioru. Dzięki temu możemy skupić się na innych zadaniach.&quot;</Box>
+            <Box fontStyle="italic">&bdquo;Since we have been using the system, we have noticed a clear decrease in the number of calls made by drivers regarding delivery or pickup. Thanks to this, we can focus on other tasks.&quot;</Box>
           </Box>
         </Carousel>
       </Box>

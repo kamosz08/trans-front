@@ -12,7 +12,7 @@ const TITLES = {
   drivers: 'Kierowcy',
 };
 
-const ThemeIcon = () => {
+export const ThemeIcon = () => {
   const [darkTheme, setDarkTheme] = useDarkMode();
   const handleMode = () => setDarkTheme(!darkTheme);
   return (

@@ -1,24 +1,22 @@
 import { Router } from '@reach/router';
+import React, { Suspense } from 'react';
 import { Login } from '@app/pages/Login';
-import { Register } from '@app/pages/Register';
-import { Layout } from '@app/components/Layout';
-import { Main } from '@app/pages/Main';
-import { Orders } from '@app/pages/Orders';
-import { Drivers } from '@app/pages/Drivers';
-import { Vehicles } from '@app/pages/Vehicles';
 import { PATHS } from '@app/consts';
+import { Register } from '@app/pages/Register';
 
-const App = () => (
-  <Layout>
-    <Router basepath="/app">
-      <Register path={PATHS.register} />
-      <Login path={PATHS.login} />
-      <Orders path={PATHS.orders} />
-      <Drivers path={PATHS.drivers} />
-      <Vehicles path={PATHS.vehicles} />
-      <Main path="/" />
-    </Router>
-  </Layout>
-);
+const AuthenticatedRoutes = React.lazy(() => import('@app/authenticatedRoutes'));
+
+const App = () => {
+  const isAuthenticated = true;
+  return (
+    <Suspense fallback={<div>Wczytywanie...</div>}>
+      <Router basepath="/app">
+        <Register path={PATHS.register} />
+        <Login path={PATHS.login} />
+        {isAuthenticated && <AuthenticatedRoutes path="/*" />}
+      </Router>
+    </Suspense>
+  );
+};
 
 export default App;

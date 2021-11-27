@@ -18,12 +18,8 @@ const FooterText = styled.div`
 `;
 
 export const Footer: React.FC = () => (
-  <Box
-    width="100%"
-    height="128px"
-    backgroundColor={theme.colors.darkGrey}
-    display="flex"
-    justifyContent="center"
+  <div
+    className="w-full h-32 bg-[#37465A] flex justify-center"
   >
     <Box
       maxWidth="1080px"
@@ -50,5 +46,5 @@ export const Footer: React.FC = () => (
         Made for educational purposes 2021
       </FooterText>
     </Box>
-  </Box>
+  </div>
 );
