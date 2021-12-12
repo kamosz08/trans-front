@@ -1,14 +1,43 @@
 import { RouteComponentProps, Link, useNavigate } from '@reach/router';
 import React from 'react';
+import * as yup from 'yup';
+
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import clsx from 'clsx';
 import { ThemeIcon } from '@app/components/TopNavigation';
+import { FormInput } from '@app/components/ui/FormInput';
 
 interface Props extends RouteComponentProps {}
 
+interface FormValues {
+  email: string;
+  password: string;
+}
+
+const validationSchema: yup.SchemaOf<FormValues> = yup.object({
+  email: yup.string().email().required().label('Email'),
+  password: yup.string().min(4).required().label('Password'),
+});
+
+const initialValues: FormValues = {
+  email: '',
+  password: '',
+};
+
 export const Login: React.FC<Props> = () => {
+  const {
+    register, handleSubmit, formState: {
+      errors, isValid, isDirty, isSubmitted,
+    },
+  } = useForm<FormValues>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: initialValues,
+    mode: 'onBlur',
+  });
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
+  const onSubmit = (submitValues: FormValues) => {
+    console.log(submitValues);
     navigate('/app/orders');
   };
 
@@ -25,51 +54,35 @@ export const Login: React.FC<Props> = () => {
             <div className="m-7">
               <form
                 className="relative"
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
               >
                 <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
-                  >
-                    Email Address
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="you@company.com"
-                      className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                    />
-                  </label>
+                  <FormInput
+                    name="email"
+                    label="Email Address"
+                    register={register}
+                    error={errors.email}
+                  />
                 </div>
-                <div className="mb-6">
-                  <div className="flex justify-between mb-2">
-                    <label
-                      htmlFor="password"
-                      className="w-full text-sm text-gray-600 dark:text-gray-400"
-                    >
-                      Password
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Your Password"
-                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                      />
-                    </label>
-                    <a
-                      href="#!"
-                      className="absolute right-0 text-sm text-gray-400 focus:outline-none focus:text-blue-500 hover:text-blue-500 dark:hover:text-blue-300"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
-
+                <div className="mb-8 relative">
+                  <FormInput
+                    name="password"
+                    label="Password"
+                    register={register}
+                    error={errors.password}
+                  />
+                  <a
+                    href="#!"
+                    className="absolute right-0 top-0 text-sm text-gray-400 focus:outline-none focus:text-blue-500 hover:text-blue-500 dark:hover:text-blue-300"
+                  >
+                    Forgot password?
+                  </a>
                 </div>
                 <div className="mb-6">
                   <button
                     type="submit"
-                    className="w-full px-3 py-4 text-white bg-blue-600 rounded-md focus:bg-blue-700 focus:outline-none"
+                    disabled={(isDirty || isSubmitted) && !isValid}
+                    className={clsx('w-full px-3 py-4 text-white bg-blue-600 rounded-md focus:bg-blue-700 focus:outline-none', (isDirty || isSubmitted) && !isValid && 'bg-gray-400 dark:bg-gray-600 cursor-default')}
                   >
                     Sign in
                   </button>

@@ -1,20 +1,53 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Link, RouteComponentProps, useNavigate } from '@reach/router';
 import React from 'react';
+
+import * as yup from 'yup';
+import clsx from 'clsx';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { ThemeIcon } from '@app/components/TopNavigation';
+import { FormInput } from '@app/components/ui/FormInput';
 
 interface Props extends RouteComponentProps {}
 
+interface FormValues {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+}
+
+const validationSchema: yup.SchemaOf<FormValues> = yup.object({
+  email: yup.string().email().required().label('Email'),
+  password: yup.string().min(4).required().label('Password'),
+  passwordConfirm: yup.string().min(4).required().label('Confirm password'),
+});
+
+const initialValues: FormValues = {
+  email: '',
+  password: '',
+  passwordConfirm: '',
+};
+
 export const Register: React.FC<Props> = () => {
+  const {
+    register, handleSubmit, formState: {
+      errors, isValid, isDirty, isSubmitted,
+    },
+  } = useForm<FormValues>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: initialValues,
+    mode: 'onBlur',
+  });
+
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
-    navigate('/app/orders');
+  const onSubmit = (submitValues: FormValues) => {
+    console.log(submitValues);
+    // navigate('/app/orders');
   };
 
   return (
     <>
-
       <div className="absolute right-4 top-4"><ThemeIcon /></div>
       <div className="flex items-center min-h-screen bg-white dark:bg-gray-900">
         <div className="container mx-auto">
@@ -26,66 +59,42 @@ export const Register: React.FC<Props> = () => {
             <div className="m-7">
               <form
                 className="relative"
-                onSubmit={handleSubmit}
+                onSubmit={handleSubmit(onSubmit)}
               >
                 <div className="mb-6">
-                  <label
-                    htmlFor="email"
-                    className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
-                  >
-                    Email Address
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      placeholder="you@company.com"
-                      className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                    />
-                  </label>
+                  <FormInput
+                    name="email"
+                    label="Email Address"
+                    register={register}
+                    error={errors.email}
+                  />
                 </div>
                 <div className="mb-6">
-                  <div className="flex justify-between mb-2">
-                    <label
-                      htmlFor="password"
-                      className="w-full text-sm text-gray-600 dark:text-gray-400"
-                    >
-                      Password
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Your Password"
-                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                      />
-                    </label>
-                  </div>
+                  <FormInput
+                    name="password"
+                    label="Password"
+                    register={register}
+                    error={errors.password}
+                  />
                 </div>
                 <div className="mb-6">
-                  <div className="flex justify-between mb-2">
-                    <label
-                      htmlFor="passwordConfirm"
-                      className="w-full text-sm text-gray-600 dark:text-gray-400"
-                    >
-                      Repeat password
-                      <input
-                        type="password"
-                        name="passwordConfirm"
-                        id="passwordConfirm"
-                        placeholder="Repeat Your Password"
-                        className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-100 focus:border-blue-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
-                      />
-                    </label>
-                  </div>
+                  <FormInput
+                    name="passwordConfirm"
+                    label="Repeat password"
+                    register={register}
+                    error={errors.passwordConfirm}
+                  />
                 </div>
                 <div className="mb-6">
                   <button
                     type="submit"
-                    className="w-full px-3 py-4 text-white bg-blue-600 rounded-md focus:bg-blue-700 focus:outline-none"
+                    disabled={(isDirty || isSubmitted) && !isValid}
+                    className={clsx('w-full px-3 py-4 text-white bg-blue-600 rounded-md focus:bg-blue-700 focus:outline-none', (isDirty || isSubmitted) && !isValid && 'bg-gray-400 dark:bg-gray-600 cursor-default')}
                   >
                     Sign in
                   </button>
                 </div>
-                <p className="text-sm text-center text-gray-400">
+                <p className="text-sm text-center text-gray-600 dark:text-gray-400">
                   Already have an account?
                   {' '}
                   <Link

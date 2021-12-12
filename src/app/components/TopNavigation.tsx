@@ -3,6 +3,10 @@ import {
   FaMoon,
   FaSun,
 } from 'react-icons/fa';
+import {
+  AiOutlineLogout,
+} from 'react-icons/ai';
+import { useNavigate } from '@reach/router';
 import { useDarkMode } from '@app/hooks/useDarkMode';
 import { useSelectedRoute } from '@app/hooks/useSelectedRoute';
 
@@ -43,6 +47,27 @@ const UserCircle = () => (
   />
 );
 
+const LogoutIcon = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/app/login');
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      type="button"
+      className="outline-none"
+    >
+      <AiOutlineLogout
+        size="24"
+        className="top-navigation-icon"
+      />
+    </button>
+  );
+};
+
 const Title = () => {
   const selectedRoute = useSelectedRoute();
   const title = TITLES[selectedRoute] || 'Trans';
@@ -55,5 +80,6 @@ export const TopNavigation = () => (
     <Title />
     <ThemeIcon />
     <UserCircle />
+    <LogoutIcon />
   </div>
 );
