@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ThemeIcon } from '@app/components/TopNavigation';
 import { FormInput } from '@app/components/ui/FormInput';
+import { useAuth } from '@app/contexts/AuthContext';
 
 interface Props extends RouteComponentProps {}
 
@@ -30,6 +31,11 @@ const initialValues: FormValues = {
 };
 
 export const Register: React.FC<Props> = () => {
+  const { register: signup, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  if (isAuthenticated) navigate('/app/orders');
+
   const {
     register, handleSubmit, formState: {
       errors, isValid, isDirty, isSubmitted,
@@ -40,10 +46,10 @@ export const Register: React.FC<Props> = () => {
     mode: 'onBlur',
   });
 
-  const navigate = useNavigate();
   const onSubmit = (submitValues: FormValues) => {
-    console.log(submitValues);
-    // navigate('/app/orders');
+    signup({
+      email: submitValues.email, password: submitValues.password, firstName: 'test', lastName: 'testlast',
+    });
   };
 
   return (
@@ -75,6 +81,7 @@ export const Register: React.FC<Props> = () => {
                     label="Password"
                     register={register}
                     error={errors.password}
+                    inputProps={{ type: 'password' }}
                   />
                 </div>
                 <div className="mb-6">
@@ -83,6 +90,7 @@ export const Register: React.FC<Props> = () => {
                     label="Repeat password"
                     register={register}
                     error={errors.passwordConfirm}
+                    inputProps={{ type: 'password' }}
                   />
                 </div>
                 <div className="mb-6">

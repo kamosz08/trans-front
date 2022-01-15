@@ -9,6 +9,7 @@ import {
 import { useNavigate } from '@reach/router';
 import { useDarkMode } from '@app/hooks/useDarkMode';
 import { useSelectedRoute } from '@app/hooks/useSelectedRoute';
+import { useAuth } from '@app/contexts/AuthContext';
 
 const TITLES = {
   orders: 'Zlecenia',
@@ -49,9 +50,9 @@ const UserCircle = () => (
 
 const LogoutIcon = () => {
   const navigate = useNavigate();
-
+  const { logout } = useAuth();
   const handleClick = () => {
-    navigate('/app/login');
+    logout().then(() => { navigate('/app/login'); });
   };
 
   return (

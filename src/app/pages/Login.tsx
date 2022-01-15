@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import clsx from 'clsx';
 import { ThemeIcon } from '@app/components/TopNavigation';
 import { FormInput } from '@app/components/ui/FormInput';
+import { useAuth } from '@app/contexts/AuthContext';
 
 interface Props extends RouteComponentProps {}
 
@@ -26,6 +27,11 @@ const initialValues: FormValues = {
 };
 
 export const Login: React.FC<Props> = () => {
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  if (isAuthenticated) navigate('/app/orders');
+
   const {
     register, handleSubmit, formState: {
       errors, isValid, isDirty, isSubmitted,
@@ -35,10 +41,9 @@ export const Login: React.FC<Props> = () => {
     defaultValues: initialValues,
     mode: 'onBlur',
   });
-  const navigate = useNavigate();
+
   const onSubmit = (submitValues: FormValues) => {
-    console.log(submitValues);
-    navigate('/app/orders');
+    login({ email: submitValues.email, password: submitValues.password });
   };
 
   return (
@@ -70,6 +75,7 @@ export const Login: React.FC<Props> = () => {
                     label="Password"
                     register={register}
                     error={errors.password}
+                    inputProps={{ type: 'password' }}
                   />
                   <a
                     href="#!"
