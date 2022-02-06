@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import clsx from 'clsx';
 import { FieldError, UseFormRegister } from 'react-hook-form';

@@ -40,7 +40,7 @@ module.exports = {
       },
     ],
     'react/jsx-max-props-per-line': [1, { maximum: 1 }],
-    'react/require-default-props': 1,
+    'react/require-default-props': 0,
     'import/order': [
       'error',
       {
@@ -64,6 +64,7 @@ module.exports = {
       },
     ],
     'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
   },
   settings: {
     'import/resolver': {

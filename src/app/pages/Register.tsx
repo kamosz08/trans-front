@@ -16,18 +16,24 @@ interface FormValues {
   email: string;
   password: string;
   passwordConfirm: string;
+  firstName: string;
+  lastName: string;
 }
 
 const validationSchema: yup.SchemaOf<FormValues> = yup.object({
   email: yup.string().email().required().label('Email'),
   password: yup.string().min(4).required().label('Password'),
   passwordConfirm: yup.string().min(4).required().label('Confirm password'),
+  firstName: yup.string().min(3).required().label('First name'),
+  lastName: yup.string().min(3).required().label('Last name'),
 });
 
 const initialValues: FormValues = {
   email: '',
   password: '',
   passwordConfirm: '',
+  firstName: '',
+  lastName: '',
 };
 
 export const Register: React.FC<Props> = () => {
@@ -43,12 +49,15 @@ export const Register: React.FC<Props> = () => {
   } = useForm<FormValues>({
     resolver: yupResolver(validationSchema),
     defaultValues: initialValues,
-    mode: 'onBlur',
+    mode: 'onChange',
   });
 
   const onSubmit = (submitValues: FormValues) => {
     signup({
-      email: submitValues.email, password: submitValues.password, firstName: 'test', lastName: 'testlast',
+      email: submitValues.email,
+      password: submitValues.password,
+      firstName: submitValues.firstName,
+      lastName: submitValues.lastName,
     });
   };
 
@@ -91,6 +100,22 @@ export const Register: React.FC<Props> = () => {
                     register={register}
                     error={errors.passwordConfirm}
                     inputProps={{ type: 'password' }}
+                  />
+                </div>
+                <div className="mb-6">
+                  <FormInput
+                    name="firstName"
+                    label="First name"
+                    register={register}
+                    error={errors.firstName}
+                  />
+                </div>
+                <div className="mb-6">
+                  <FormInput
+                    name="lastName"
+                    label="Last name"
+                    register={register}
+                    error={errors.lastName}
                   />
                 </div>
                 <div className="mb-6">

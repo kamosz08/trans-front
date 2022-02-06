@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { axiosInstance } from '@app/api/api';
 
 type LoginRequestParams = {
-  email: string;
+  username: string;
   password:string;
 }
 
@@ -43,7 +43,7 @@ function AuthProvider({ children }) {
       if (e.status !== 500) {
         toast('Wrong email or password', { type: 'error' });
       } else {
-        toast('Something went wrong', { type: 'error' });
+        toast(e.response?.data?.message || 'Something went wrong', { type: 'error' });
       }
     }
   };
@@ -57,23 +57,18 @@ function AuthProvider({ children }) {
       });
       setIsAuthenticated(true);
     } catch (e) {
-      toast('Something went wrong', { type: 'error' });
+      toast(e.response?.data?.message || 'Something went wrong', { type: 'error' });
     }
   };
 
   // 5. Clear the auth tokens from localstorage
   const logout = async () => {
     try {
-      await axiosInstance.post('/auth/logout');
-
-      clearAuthTokens();
       setIsAuthenticated(false);
+      await axiosInstance.post('/auth/logout');
+      clearAuthTokens();
     } catch (e) {
-      if (e.status !== 500) {
-        toast('Wrong email or password', { type: 'error' });
-      } else {
-        toast('Something went wrong', { type: 'error' });
-      }
+      console.error(e.response?.data?.message);
     }
   };
 

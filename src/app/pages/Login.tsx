@@ -4,10 +4,10 @@ import * as yup from 'yup';
 
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import clsx from 'clsx';
 import { ThemeIcon } from '@app/components/TopNavigation';
 import { FormInput } from '@app/components/ui/FormInput';
 import { useAuth } from '@app/contexts/AuthContext';
+import { Button } from '@app/components/ui/Button';
 
 interface Props extends RouteComponentProps {}
 
@@ -39,11 +39,11 @@ export const Login: React.FC<Props> = () => {
   } = useForm<FormValues>({
     resolver: yupResolver(validationSchema),
     defaultValues: initialValues,
-    mode: 'onBlur',
+    mode: 'onChange',
   });
 
   const onSubmit = (submitValues: FormValues) => {
-    login({ email: submitValues.email, password: submitValues.password });
+    login({ username: submitValues.email, password: submitValues.password });
   };
 
   return (
@@ -85,13 +85,12 @@ export const Login: React.FC<Props> = () => {
                   </a>
                 </div>
                 <div className="mb-6">
-                  <button
+                  <Button
                     type="submit"
                     disabled={(isDirty || isSubmitted) && !isValid}
-                    className={clsx('w-full px-3 py-4 text-white bg-blue-600 rounded-md focus:bg-blue-700 focus:outline-none', (isDirty || isSubmitted) && !isValid && 'bg-gray-400 dark:bg-gray-600 cursor-default')}
                   >
                     Sign in
-                  </button>
+                  </Button>
                 </div>
                 <p className="text-sm text-center text-gray-400">
                   Don&#x27;t have an account yet?
