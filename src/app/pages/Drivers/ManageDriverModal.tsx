@@ -2,11 +2,15 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import React from 'react';
+import { toast } from 'react-toastify';
 import { Modal } from '@app/components/ui/Modal';
 import { FormInput } from '@app/components/ui/FormInput';
+import { useDriversMutations } from './api/useDriversMutations';
+import { Driver } from './api/driversService';
 
 interface Props {
   handleClose: ()=>void;
+  driver?: Driver;
 }
 
 interface FormValues {
@@ -22,13 +26,12 @@ const validationSchema: yup.SchemaOf<FormValues> = yup.object({
     .label('Pesel'),
 });
 
-const initialValues: FormValues = {
-  firstName: '',
-  lastName: '',
-  idNumber: null,
-};
-
-export const ManageDriverModal = ({ handleClose }:Props) => {
+export const ManageDriverModal = ({ handleClose, driver }: Props) => {
+  const initialValues: FormValues = {
+    firstName: driver?.firstName || '',
+    lastName: driver?.lastName || '',
+    idNumber: driver?.pesel || null,
+  };
   const {
     register, handleSubmit, formState: {
       errors, isValid, isSubmitted,
@@ -38,15 +41,46 @@ export const ManageDriverModal = ({ handleClose }:Props) => {
     defaultValues: initialValues,
     mode: 'onChange',
   });
-  console.log(errors, isValid);
+  const { createDriverMutation, updateDriverMutation } = useDriversMutations();
 
   const onSubmit = (submitValues: FormValues) => {
-    console.log(submitValues);
+    if (!driver) {
+      createDriverMutation.mutate({
+        firstName: submitValues.firstName,
+        lastName: submitValues.lastName,
+        pesel: submitValues.idNumber as number,
+      }, {
+        onSuccess: () => {
+          toast.success('Driver has been added');
+          handleClose();
+        },
+        onError: () => {
+          toast.error('Something went wrong while adding driver');
+        },
+      });
+    } else {
+      updateDriverMutation.mutate({
+        id: driver._id,
+        payload: {
+          firstName: submitValues.firstName,
+          lastName: submitValues.lastName,
+          pesel: submitValues.idNumber as number,
+        },
+      }, {
+        onSuccess: () => {
+          toast.success('Driver has been updated');
+          handleClose();
+        },
+        onError: () => {
+          toast.error('Something went wrong while updating driver');
+        },
+      });
+    }
   };
 
   return (
     <Modal
-      title="Add driver"
+      title={driver ? 'Edit driver' : 'Add driver'}
       onCancel={handleClose}
       onOk={handleSubmit(onSubmit)}
       okDisabled={!isValid || isSubmitted}

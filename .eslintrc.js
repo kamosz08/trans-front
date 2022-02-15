@@ -65,6 +65,8 @@ module.exports = {
     ],
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 0,
+    'no-underscore-dangle': 0,
+    'max-len': ['error', { code: 160 }],
   },
   settings: {
     'import/resolver': {

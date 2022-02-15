@@ -29,7 +29,7 @@ export const Modal = ({
       id="my-modal"
     />
     <div
-      className="relative top-20 mx-auto px-5 py-2 border w-auto max-w-lg shadow-xl rounded-md bg-white dark:bg-gray-900"
+      className="absolute left-0 right-0 top-32 mx-auto px-5 py-2 border w-auto max-w-lg shadow-xl rounded-md bg-white dark:bg-gray-900"
     >
       <div className="flex justify-between border-b border-solid border-black py-2 px-5 mb-2 -mx-5">
         <div className="text-lg">{title}</div>

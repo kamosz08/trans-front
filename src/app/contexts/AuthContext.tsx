@@ -1,7 +1,11 @@
-import { clearAuthTokens, setAuthTokens, isLoggedIn } from 'axios-jwt';
+import {
+  clearAuthTokens, setAuthTokens, isLoggedIn, TokenRefreshRequest, IAuthTokens, applyAuthTokenInterceptor,
+} from 'axios-jwt';
 import * as React from 'react';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 import { axiosInstance } from '@app/api/api';
+import { API_URL } from '@app/config';
 
 type LoginRequestParams = {
   username: string;
@@ -25,10 +29,17 @@ type ContextType = {
 const AuthContext = React.createContext<ContextType|undefined>(undefined);
 
 function AuthProvider({ children }) {
-  // const [state, dispatch] = React.useReducer(authReducer, {auth: 0})
-  // NOTE: you *might* need to memoize this value
-  // Learn more in http://kcd.im/optimize-context
   const [isAuthenticated, setIsAuthenticated] = React.useState(isLoggedIn());
+
+  const requestRefresh: TokenRefreshRequest = async (refreshToken: string): Promise<IAuthTokens | string> => {
+    const response = await axios.post(`${API_URL}/auth/refresh`, { token: refreshToken });
+    setIsAuthenticated(true);
+    return response.data.access_token;
+  };
+
+  React.useEffect(() => {
+    applyAuthTokenInterceptor(axiosInstance, { requestRefresh });
+  }, []);
 
   // 4. Post email and password and get tokens in return. Call setAuthTokens with the result.
   const login = async (params: LoginRequestParams) => {

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { PageProps } from 'gatsby';
 import config from 'react-reveal/globals';
 
 import { Layout } from '@components/Layout';
@@ -9,19 +8,15 @@ import { SEO } from '@components/Seo';
 
 config({ ssrFadeout: true });
 
-const IndexPage = (props: PageProps) => {
-  console.log(props);
-
-  return (
-    <Layout>
-      <SEO
-        title="Home"
-        description="Trans Home Page"
-      />
-      <Header />
-      <MainPageContent />
-    </Layout>
-  );
-};
+const IndexPage = () => (
+  <Layout>
+    <SEO
+      title="Home"
+      description="Trans Home Page"
+    />
+    <Header />
+    <MainPageContent />
+  </Layout>
+);
 
 export default IndexPage;

@@ -12,9 +12,9 @@ import { useSelectedRoute } from '@app/hooks/useSelectedRoute';
 import { useAuth } from '@app/contexts/AuthContext';
 
 const TITLES = {
-  orders: 'Zlecenia',
-  vehicles: 'Pojazdy',
-  drivers: 'Kierowcy',
+  orders: 'Orders',
+  vehicles: 'Vehicles',
+  drivers: 'Drivers',
 };
 
 export const ThemeIcon = () => {
