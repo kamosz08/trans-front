@@ -36,17 +36,20 @@ const queryClient = new QueryClient({
   },
 });
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <ToastContainer
-        position="top-center"
-        theme="dark"
-      />
-      <Routes />
-    </AuthProvider>
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
-);
+const App = () => {
+  if (typeof window === 'undefined') return null;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ToastContainer
+          position="top-center"
+          theme="dark"
+        />
+        <Routes />
+      </AuthProvider>
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  );
+};
 
 export default App;
